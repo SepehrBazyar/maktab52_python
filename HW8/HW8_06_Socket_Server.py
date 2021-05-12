@@ -19,13 +19,14 @@ while True:
     data = pickle.loads(client.recv(1024))
     logging.info("Get a Text Message!")
     if data[0]:
+        text = "#$%^&*~!@"
         logging.debug("Translating...")
         try:
             text = getattr(translators, data[1])(data[0],
             to_language = data[2], from_language = data[3])
-            client.send(text.encode())
-            logging.info("Send Translation for Client!")
-        except: logging.error("Invalid Text! Try Again...")
+        except: logging.error("Invalid Text! Untranslatable...")
+        else: logging.info("Send Translation for Client!")
+        finally: client.send(text.encode())
     else:
         logging.warning("Client Disconnected!")
         tcpsocket.close()
