@@ -82,11 +82,31 @@ class Sudoku: #sudoku class has combination from table not inheritance because a
 {f"<Sudoku {self.level} Level>".center(25)}
 {self._table.__repr__()}"""
 
-print("Welcome to My Sudoku Game ^_^\t{© Seper Bazyar}\n")
+def finished(*args) -> bool: #check finish game with 0 in numbers or not
+    array = []
+    for item in args:
+        for index in item:
+            array.append(index)
+    return 0 in array
+
+print("Welcome to My Sudoku Game ^_^\t{© Seper Bazyar}\n") #console gaming part for user...
 lvl = int(input("Please Selece Game Level:\n1. Easy\n2. Medium\n3. Hard\n\n0 for Quit Game\n>>> "))
 if lvl:
     print(sudoku := Sudoku(level = "Easy" if lvl == 1 else ("Medium" if lvl == 2 else "Hard")))
-    allowing = [[not bool(column) for column in row] for row in sudoku._table.table]
-    while True:
-        # TODO: User Enter Number Complete Table 
-        pass
+    allowing = [[not bool(column) for column in row] for row in sudoku._table.table] #changeables
+    print("(Whenever You want to Leave the Game Just Enter 0 in Inputs!)\n")
+    while finished(*sudoku._table.table):
+        row, column = int(input("Intended  Row   Number: ")), int(input("Intended Column Number: "))
+        if row and column:
+            row -= 1; column -= 1
+            if allowing[row][column]:
+                num = int(input("\nWhat Number Replaced? "))
+                pre, sudoku._table.table[row][column] = sudoku._table.table[row][column], num
+                if not sudoku._validate(row, column):
+                    sudoku._table.table[row][column] = pre
+                    print("\nYou Can't Write this Number! Because Confilicted...")
+            else: print("\nYou Can't Change this Number! Please Try Again...")
+        else: break
+        print(sudoku)
+    else: print("Congratulations! You WIN! :))")
+    print("\nGood Luck...")
