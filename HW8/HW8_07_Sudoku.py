@@ -2,7 +2,7 @@
 from random import randint, sample #randint for random number [1, 9] and sample for empty cells
 import logging #logging for write log in console when restart create table when cant trying...
 
-logging.basicConfig(level = logging.DEBUG, format = '%(asctime)s - %(levelname)-10s - %(message)s') #debug for developer
+logging.basicConfig(level = logging.INFO, format = '%(asctime)s - %(levelname)-10s - %(message)s') #debug for developer
 
 class LevelError(Exception): pass #create desire exception for when get invalid input for level of sudoku table
 
@@ -81,3 +81,12 @@ class Sudoku: #sudoku class has combination from table not inheritance because a
         return f"""
 {f"<Sudoku {self.level} Level>".center(25)}
 {self._table.__repr__()}"""
+
+print("Welcome to My Sudoku Game ^_^\t{© Seper Bazyar}\n")
+lvl = int(input("Please Selece Game Level:\n1. Easy\n2. Medium\n3. Hard\n\n0 for Quit Game\n>>> "))
+if lvl:
+    print(sudoku := Sudoku(level = "Easy" if lvl == 1 else ("Medium" if lvl == 2 else "Hard")))
+    allowing = [[not bool(column) for column in row] for row in sudoku._table.table]
+    while True:
+        # TODO: User Enter Number Complete Table 
+        pass
