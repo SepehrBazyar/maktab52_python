@@ -8,5 +8,9 @@ class KeyNotFoundError(Exception):
     pass
 
 
+class KeyTypeError(Exception):
+    pass
+
+
 class DuplicateUserError(Exception):
     pass
