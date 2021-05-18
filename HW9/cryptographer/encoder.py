@@ -1,7 +1,8 @@
 # Written by: Sepehr Bazyar
 from cryptography.fernet import Fernet
-from exceptions import KeyTypeError, WrongKeyError
+from exceptions import KeyTypeError, WrongKeyError, FileNotFoundError
 from typing import Union
+# TODO: use logging
 
 
 class Encrypt:
@@ -31,10 +32,24 @@ class Encrypt:
             new_key, bytes) else new_key.encode()
 
     def __encrypt(self, text: str) -> bytes:
-        return self.__frnt.encrypt(str(text).encode())
+        return self.__frnt.encrypt(text.encode())
 
-    def __call__(self, file_path: str) -> None:
-        pass
+    def __call__(self, file_path: str) -> str:
+        try:
+            with open(file_path) as fl:
+                lines = fl.readlines()
+        except:
+            raise FileNotFoundError(f"No Such {file_path} File")
+        else:
+            encrypted = []
+            for line in lines:
+                encrypted.append(self.__encrypt(line))
+
+            name = file_path.rsplit(
+                '.', 1)[0] + "_encrypted." + file_path.rsplit('.', 1)[1]
+            with open(name, 'wb') as fl:
+                print(*encrypted, sep='\n', file=fl)
+            return f"Successfully Encrypted into {name} File."
 
     def __repr__(self) -> str:
-        pass
+        return f"<Encrypt Key: {self.__key.decode()}>"
