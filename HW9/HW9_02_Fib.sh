@@ -5,7 +5,11 @@ a=1
 b=1
 for (( counter=0; counter < $n; counter++ ))
 do
-	echo $a
+	if [ $counter -gt 0 ];
+	then
+		echo ", " >> "Fib.txt"
+	fi
+	echo $a >> "Fib.txt"
 	c=$(($a+$b))
 	a=$b
 	b=$c
