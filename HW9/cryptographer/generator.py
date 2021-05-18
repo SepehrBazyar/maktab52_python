@@ -1,6 +1,6 @@
 # Written by: Sepehr Bazyar
 from cryptography.fernet import Fernet
-from .exceptions import *
+from exceptions import *
 import pickle
 
 
@@ -46,6 +46,10 @@ class KeyGenerator:
     def __save_file(cls) -> None:
         with open(".\\encrypts.key", 'wb') as fl:
             pickle.dump(cls.__keys, fl)
+
+    def __del__(self):
+        self.__class__.__keys.pop(self.__ID)
+        self.__save_file()
 
     def __repr__(self) -> str:
         return f"<{self.__username}: {self.__key.decode()}>"
