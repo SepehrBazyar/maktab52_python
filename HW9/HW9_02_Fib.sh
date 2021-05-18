@@ -3,6 +3,7 @@
 read -p "Please Enter N th of the Fib Sequence: " n
 a=1
 b=1
+echo "Fib($n) = " > "Fib.txt"
 for (( counter=0; counter < $n; counter++ ))
 do
 	if [ $counter -gt 0 ];
