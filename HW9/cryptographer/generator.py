@@ -1,6 +1,6 @@
 # Written by: Sepehr Bazyar
 from cryptography.fernet import Fernet
-from exceptions import *
+from exceptions import DuplicateUserError
 import pickle
 
 
@@ -17,8 +17,7 @@ class KeyGenerator:
         if username.encode().hex() not in cls.__keys:
             return super().__new__(cls)
         else:
-            raise Exception("Duplicated!!")
-            # TODO: import my except
+            raise DuplicateUserError(f"The {username} Name has Already Existed.")
 
     def __init__(self, username: str) -> None:
         self.__username = username
@@ -34,7 +33,8 @@ class KeyGenerator:
     def username(self, new_username: str) -> None:
         new_ID = new_username.encode().hex()
         if new_ID in self.__class__.__keys:
-            raise Exception("Duplicated!!")
+            raise DuplicateUserError(
+                f"The {new_username} Name Already Existed.")
         self.__class__.__keys[new_ID] = self.__class__.__keys.pop(self.__ID)
         self.__username, self.__ID = new_username, new_ID
         self.__save_file()

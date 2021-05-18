@@ -1,4 +1,12 @@
 # Written by: Sepehr Bazyar
 
-class Test(Exception):
+class WrongKeyError(Exception):
+    pass
+
+
+class KeyNotFoundError(Exception):
+    pass
+
+
+class DuplicateUserError(Exception):
     pass
