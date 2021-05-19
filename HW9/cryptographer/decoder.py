@@ -1,6 +1,6 @@
 # Written by: Sepehr Bazyar
 from cryptography.fernet import Fernet
-from exceptions import KeyTypeError, WrongKeyError, FileNotFoundError
+from .exceptions import KeyTypeError, WrongKeyError, FileNotFoundError
 from typing import Union
 
 

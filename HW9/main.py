@@ -1,5 +1,13 @@
 # Written by: Sepehr Bazyar
-from cryptographer import *  # import all of modules of in this package with star char
+from cryptographer import generator, encoder, decoder, exceptions
 
 if __name__ == '__main__':
-    pass
+    name = input("Username: ")
+    try:
+        user = generator.KeyGenerator(name)
+    except:
+        key = generator.KeyGenerator._keys[name.encode().hex()]
+    else:
+        key = user.key
+    finally:
+        pass
