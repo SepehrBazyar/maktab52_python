@@ -43,7 +43,7 @@ class Encrypt:
         else:
             encrypted = []
             for line in lines:
-                encrypted.append(self.__encrypt(line))
+                encrypted.append(self.__encrypt(line.strip()))
 
             name = file_path.rsplit(
                 '.', 1)[0] + "_encrypted." + file_path.rsplit('.', 1)[1]
