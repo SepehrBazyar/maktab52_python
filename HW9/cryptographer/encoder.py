@@ -48,7 +48,8 @@ class Encrypt:
             name = file_path.rsplit(
                 '.', 1)[0] + "_encrypted." + file_path.rsplit('.', 1)[1]
             with open(name, 'wb') as fl:
-                print(*encrypted, sep='\n', file=fl)
+                for item in encrypted:
+                    fl.write(item + b'\n')
             return f"Successfully Encrypted into {name} File."
 
     def __repr__(self) -> str:

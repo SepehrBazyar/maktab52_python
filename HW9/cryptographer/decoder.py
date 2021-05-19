@@ -1,6 +1,6 @@
 # Written by: Sepehr Bazyar
 from cryptography.fernet import Fernet
-from .exceptions import KeyTypeError, WrongKeyError, FileNotFoundError
+from exceptions import KeyTypeError, WrongKeyError, FileNotFoundError
 from typing import Union
 
 
@@ -31,7 +31,7 @@ class Decrypt:
             new_key, bytes) else new_key.encode()
 
     def __decrypt(self, secret: bytes) -> str:
-        return self.__frnt.decrypt(secret.encode())
+        return self.__frnt.decrypt(secret).decode()
 
     def __call__(self, file_path: str) -> str:
         try:
@@ -47,7 +47,7 @@ class Decrypt:
             name = file_path.rsplit(
                 '.', 1)[0] + "_decrypted." + file_path.rsplit('.', 1)[1]
             with open(name, 'w') as fl:
-                print(*decrypted, sep='\n', file=fl)
+                print(*decrypted, sep='\n', file = fl)
             return f"Successfully Encrypted into {name} File."
 
     def __repr__(self) -> str:
