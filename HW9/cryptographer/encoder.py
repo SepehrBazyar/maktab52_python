@@ -50,7 +50,7 @@ class Encrypt:
             with open(name, 'wb') as fl:
                 for item in encrypted:
                     fl.write(item + b'\n')
-            return f"Successfully Encrypted into {name} File."
+            return name
 
     def __repr__(self) -> str:
         return f"<Encrypt Key: {self.__key.decode()}>"

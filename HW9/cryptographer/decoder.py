@@ -48,7 +48,7 @@ class Decrypt:
                 '.', 1)[0] + "_decrypted." + file_path.rsplit('.', 1)[1]
             with open(name, 'w') as fl:
                 print(*decrypted, sep='\n', file = fl)
-            return f"Successfully Encrypted into {name} File."
+            return name
 
     def __repr__(self) -> str:
         return f"<Decrypt Key: {self.__key.decode()}>"
