@@ -1,35 +1,19 @@
 # Written by: Sepehr Bazyar
-# TODO: write docstring for each exceptions
 class WrongKeyError(Exception):
-    """
-
-    """
-    pass
+    "Error When Base of Encrypt or Decrypt on a Worng Key."
 
 
 class KeyNotFoundError(Exception):
-    """
-    
-    """
-    pass
+    "Error When Not Found Key of User in the File."
 
 
 class KeyTypeError(Exception):
-    """
-    
-    """
-    pass
+    "Error When Get Invalid Key Because Type Not Bytes or Str."
 
 
 class FileNotFoundError(FileNotFoundError):
-    """
-    
-    """
-    pass
+    "Built-in Error in Exception Module at Not Found File."
 
 
 class DuplicateUserError(Exception):
-    """
-    
-    """
-    pass
+    "Error When Create New User with Usage Username."
