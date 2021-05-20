@@ -37,11 +37,6 @@ def encrypt(key: bytes):
     return wrapper
 
 
-@encrypt(key)
-def say_hello(name: str) -> str:
-    return f"Hello {name}"
-
-
 if __name__ == '__main__':
     name = input("Username: ")
     try:
@@ -51,6 +46,10 @@ if __name__ == '__main__':
     else:
         key = user.key
     finally:
+        @encrypt(key)
+        def say_hello(name: str) -> str:
+            return f"Hello {name}!"
+
         print('\n', say_hello(name).decode())
         code = input("""
 1. Encrypt
