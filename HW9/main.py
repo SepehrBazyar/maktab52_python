@@ -1,5 +1,16 @@
 # Written by: Sepehr Bazyar
 from cryptographer import generator, encoder, decoder, exceptions
+from typing import Callable
+import argparse
+
+def encrypt(key: bytes):
+    def wrapper(functions: Callable):
+        def inner(*args, **kwargs):
+            result = function(*args, **kwargs)
+            answer = encoder.Encrypt(key)._encrypt(result)
+            return answer
+        return inner
+    return wrapper
 
 if __name__ == '__main__':
     name = input("Username: ")

@@ -1,7 +1,7 @@
 # Written by: Sepehr Bazyar
 from cryptography.fernet import Fernet
 from .exceptions import KeyTypeError, WrongKeyError, FileNotFoundError
-from typing import Union
+from typing import Callable, Union
 # TODO: use logging
 
 
@@ -31,7 +31,7 @@ class Encrypt:
         self.__key = new_key if isinstance(
             new_key, bytes) else new_key.encode()
 
-    def __encrypt(self, text: str) -> bytes:
+    def _encrypt(self, text: str) -> bytes:
         return self.__frnt.encrypt(text.encode())
 
     def __call__(self, file_path: str) -> str:
@@ -43,7 +43,7 @@ class Encrypt:
         else:
             encrypted = []
             for line in lines:
-                encrypted.append(self.__encrypt(line.strip()))
+                encrypted.append(self._encrypt(line.strip()))
 
             name = file_path.rsplit(
                 '.', 1)[0] + "_encrypted." + file_path.rsplit('.', 1)[1]
