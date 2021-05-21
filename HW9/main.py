@@ -42,20 +42,23 @@ def encrypt(key: bytes):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="<Encrypt & Decrypt Message>")
-    parser.add_argument('-l', '--login', metavar="{SIGN_IN, SIGN_UP}", action='store', choices=[
-                        "sign_in", "sign_up"], required=True, help="Account Login Type")
+    parser.add_argument('-l', '--login', metavar="{SIGN_IN, SIGN_UP}", action='store',
+                        choices=["sign_in", "sign_up"], required=True, help="Account Login Type")
 
-    subprasers = parser.add_subparsers(dest='command')
+    subprasers = parser.add_subparsers(
+        dest='command', help="Cryptography Program Type")
 
     encr = subprasers.add_parser('encrypt', help="Encrypted File or Message")
-    encr.add_argument('-m', '--message', action='store_true', dest='file')
+    encr.add_argument('-m', '--message', action='store_true',
+                      dest='file', help="Get Text Message in Console")
     encr.add_argument('-p', '--path', metavar="PATH", action='store',
-                      type=str, help="File Address Location")
+                      type=str, help="Text File Address Location")
 
     decr = subprasers.add_parser('decrypt', help="Decrypted File or Message")
-    decr.add_argument('-m', '--message', action='store_true', dest='file')
+    decr.add_argument('-m', '--message', action='store_true',
+                      dest='file', help="Get Secret Message in Console")
     decr.add_argument('-p', '--path', metavar="PATH", action='store',
-                      type=str, help="File Address Location")
+                      type=str, help="Binary File Address Location")
 
     args = parser.parse_args()
 
@@ -109,10 +112,10 @@ if __name__ == '__main__':
                         counter += 1
                     except KeyboardInterrupt:
                         break
-                with open(f"{lines[0][: -1]}.txt", 'w') as fl:
+                with open(f"{lines[0][: 31][: -1]}.txt", 'w') as fl:
                     fl.writelines(lines)
-                enc(f"{lines[0][: -1]}.txt")
-                remove(f"{lines[0][: -1]}.txt")
+                enc(f"{lines[0][: 31][: -1]}.txt")
+                remove(f"{lines[0][: 31][: -1]}.txt")
 
         elif args.command == "decrypt":
             dec = decoder.Decrypt(key)
@@ -126,10 +129,10 @@ if __name__ == '__main__':
                         counter += 1
                     except KeyboardInterrupt:
                         break
-                with open(f"{lines[0][: -1]}.txt", 'wb') as fl:
+                with open(f"{lines[0][: 31][: -1].decode()}.txt", 'wb') as fl:
                     fl.writelines(lines)
-                dec(f"{lines[0][: -1]}.txt")
-                remove(f"{lines[0][: -1]}.txt")
+                dec(f"{lines[0][: 31][: -1].decode()}.txt")
+                remove(f"{lines[0][: 31][: -1].decode()}.txt")
 
         else:
             raise exceptions.InvalidInputError("Just Encrypt or Decrypt.")
