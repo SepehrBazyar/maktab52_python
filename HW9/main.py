@@ -102,14 +102,34 @@ if __name__ == '__main__':
             if not args.file:
                 enc(args.path)
             else:
-                pass
+                lines, counter = [], 1
+                while True:
+                    try:
+                        lines.append(input(f"#{counter} ") + '\n')
+                        counter += 1
+                    except KeyboardInterrupt:
+                        break
+                with open(f"{lines[0][: -1]}.txt", 'w') as fl:
+                    fl.writelines(lines)
+                enc(f"{lines[0][: -1]}.txt")
+                remove(f"{lines[0][: -1]}.txt")
 
         elif args.command == "decrypt":
             dec = decoder.Decrypt(key)
             if not args.file:
                 dec(args.path)
             else:
-                pass
+                lines, counter = [], 1
+                while True:
+                    try:
+                        lines.append(input(f"#{counter} ").encode() + b'\n')
+                        counter += 1
+                    except KeyboardInterrupt:
+                        break
+                with open(f"{lines[0][: -1]}.txt", 'wb') as fl:
+                    fl.writelines(lines)
+                dec(f"{lines[0][: -1]}.txt")
+                remove(f"{lines[0][: -1]}.txt")
 
         else:
             raise exceptions.InvalidInputError("Just Encrypt or Decrypt.")
