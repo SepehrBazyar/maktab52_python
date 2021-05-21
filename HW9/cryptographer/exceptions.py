@@ -20,8 +20,12 @@ class DuplicateUserError(Exception):
 
 
 class WrongPasswordError(Exception):
-    "Error When Enter Wrong Password for Login"
+    "Error When Enter Wrong Password for Login."
 
 
 class PasswordMatchingError(Exception):
-    "Error When Not Match Pass and Repeated Pass in Sign Up"
+    "Error When Not Match Pass and Repeated Pass in Sign Up."
+
+
+class UserNotFoundError(Exception):
+    "Error When Sign in User with Wrong User Name."

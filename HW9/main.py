@@ -42,33 +42,58 @@ def encrypt(key: bytes):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="<Encrypt & Decrypt Message>")
-    parser.add_argument('-l', '--login', metavar="ACCOUNT", action='store',
-                        choices=["sign in", "sign up"], required=True, help="Login Type")
+    parser.add_argument('-l', '--login', metavar="{SIGN_IN, SIGN_UP}", action='store', choices=[
+                        "sign_in", "sign_up"], required=True, help="Account Login Type")
+
+    # subprasers = parser.add_subparsers(dest='command')
+    # blame = subprasers.add_parser('blame', help='blame people')
+    # blame.add_argument(
+    #     '--dry-run',
+    #     help='do not blame, just pretend',
+    #     action='store_true'
+    # )
+    # blame.add_argument('name', nargs='+', help='name(s) to blame')
+    # praise = subprasers.add_parser('praise', help='praise someone')
+    # praise.add_argument('name', help='name of person to praise')
+    # praise.add_argument(
+    #     'reason',
+    #     help='what to praise for (optional)',
+    #     default="no reason",
+    #     nargs='?'
+    # )
+
     args = parser.parse_args()
 
     user_pass = {}
     try:
         with open(".\\cryptographer\\users.pass", 'rb') as fl:
             user_pass.update(pickle.load(fl))
-    except: pass
+    except:
+        pass
 
     username = input("Username: ")
     password = sha256(getpass("Password: ").encode()).hexdigest()
-    if args.username == "sign up":
+    if args.login == "sign_up":
         re_password = sha256(getpass("Repeat Password: ").encode()).hexdigest()
         if re_password != password:
             raise exceptions.PasswordMatchingError("Password Not Match.")
-        user_pass[username] = password
-        with open(".\\cryptographer\\users.pass", 'wb') as fl:
-            pickle.dump(user_pass, fl)
+        if username not in user_pass:
+            user_pass[username] = password
+            with open(".\\cryptographer\\users.pass", 'wb') as fl:
+                pickle.dump(user_pass, fl)
+        else:
+            raise exceptions.DuplicateUserError("User Name is Already in Use.")
     else:
-        if user_pass[username] != password:
-            raise exceptions.WrongPasswordError("Wrong Password.")
+        if username in user_pass:
+            if user_pass[username] != password:
+                raise exceptions.WrongPasswordError("Wrong Password.")
+        else:
+            raise exceptions.UserNotFoundError("Wrong User Name.")
 
     try:
-        user = generator.KeyGenerator(args.username)
+        user = generator.KeyGenerator(username)
     except:
-        key = generator.KeyGenerator._keys[args.username.encode().hex()]
+        key = generator.KeyGenerator._keys[username.encode().hex()]
     else:
         key = user.key
     finally:
@@ -76,4 +101,4 @@ if __name__ == '__main__':
         def say_hello(name: str) -> str:
             return f"Hello {name}!"
 
-        print('\n', say_hello(args.username).decode())
+        print('\n', say_hello(username).decode())
