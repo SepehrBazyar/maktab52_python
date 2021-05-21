@@ -29,3 +29,7 @@ class PasswordMatchingError(Exception):
 
 class UserNotFoundError(Exception):
     "Error When Sign in User with Wrong User Name."
+
+
+class InvalidInputError(Exception):
+    "Error When Get Invalid Input in Each Other."

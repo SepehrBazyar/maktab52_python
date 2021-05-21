@@ -45,22 +45,17 @@ if __name__ == '__main__':
     parser.add_argument('-l', '--login', metavar="{SIGN_IN, SIGN_UP}", action='store', choices=[
                         "sign_in", "sign_up"], required=True, help="Account Login Type")
 
-    # subprasers = parser.add_subparsers(dest='command')
-    # blame = subprasers.add_parser('blame', help='blame people')
-    # blame.add_argument(
-    #     '--dry-run',
-    #     help='do not blame, just pretend',
-    #     action='store_true'
-    # )
-    # blame.add_argument('name', nargs='+', help='name(s) to blame')
-    # praise = subprasers.add_parser('praise', help='praise someone')
-    # praise.add_argument('name', help='name of person to praise')
-    # praise.add_argument(
-    #     'reason',
-    #     help='what to praise for (optional)',
-    #     default="no reason",
-    #     nargs='?'
-    # )
+    subprasers = parser.add_subparsers(dest='command')
+
+    encr = subprasers.add_parser('encrypt', help="Encrypted File or Message")
+    encr.add_argument('-m', '--message', action='store_true', dest='file')
+    encr.add_argument('-p', '--path', metavar="PATH", action='store',
+                      type=str, help="File Address Location")
+
+    decr = subprasers.add_parser('decrypt', help="Decrypted File or Message")
+    decr.add_argument('-m', '--message', action='store_true', dest='file')
+    decr.add_argument('-p', '--path', metavar="PATH", action='store',
+                      type=str, help="File Address Location")
 
     args = parser.parse_args()
 
@@ -102,3 +97,19 @@ if __name__ == '__main__':
             return f"Hello {name}!"
 
         print('\n', say_hello(username).decode())
+        if args.command == "encrypt":
+            enc = encoder.Encrypt(key)
+            if not args.file:
+                enc(args.path)
+            else:
+                pass
+
+        elif args.command == "decrypt":
+            dec = decoder.Decrypt(key)
+            if not args.file:
+                dec(args.path)
+            else:
+                pass
+
+        else:
+            raise exceptions.InvalidInputError("Just Encrypt or Decrypt.")
