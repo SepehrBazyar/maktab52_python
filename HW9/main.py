@@ -38,11 +38,19 @@ def encrypt(key: bytes):
 
 
 if __name__ == '__main__':
-    name = input("Username: ")
+    parser = argparse.ArgumentParser(description="<Encrypt & Decrypt Message>")
+    parser.add_argument('-u', '--username', metavar="USERNAME",
+                        action='store', type=str, required=True, help="User Name")
+    parser.add_argument('-e', '--encrypt', metavar="ENCRYPT",
+                        action='store', type=str, default=None, help="File Address")
+    parser.add_argument('-d', '--decrypt', metavar="DECRYPT",
+                        action='store', type=str, default=None, help="File Address")
+    args = parser.parse_args()
+
     try:
-        user = generator.KeyGenerator(name)
+        user = generator.KeyGenerator(args.username)
     except:
-        key = generator.KeyGenerator._keys[name.encode().hex()]
+        key = generator.KeyGenerator._keys[args.username.encode().hex()]
     else:
         key = user.key
     finally:
@@ -50,15 +58,10 @@ if __name__ == '__main__':
         def say_hello(name: str) -> str:
             return f"Hello {name}!"
 
-        print('\n', say_hello(name).decode())
-        code = input("""
-1. Encrypt
-2. Decrypt
-
->>> """)
-        if code == '1':
+        print('\n', say_hello(args.username).decode())
+        if args.encrypt:
             enc = encoder.Encrypt(key)
-            enc(input("File Address: "))
-        else:
+            enc(args.encrypt)
+        if args.decrypt:
             dec = decoder.Decrypt(key)
-            dec(input("File Address: "))
+            dec(args.decrypt)
