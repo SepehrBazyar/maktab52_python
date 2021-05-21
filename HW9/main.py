@@ -2,7 +2,10 @@
 from cryptographer import generator, encoder, decoder, exceptions
 from typing import Callable
 from os import remove
+from hashlib import sha256
+from getpass import getpass
 import argparse
+import pickle
 
 
 class SecretOpen:
@@ -39,13 +42,28 @@ def encrypt(key: bytes):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="<Encrypt & Decrypt Message>")
-    parser.add_argument('-u', '--username', metavar="USERNAME",
-                        action='store', type=str, required=True, help="User Name")
-    parser.add_argument('-e', '--encrypt', metavar="ENCRYPT",
-                        action='store', type=str, default=None, help="File Address")
-    parser.add_argument('-d', '--decrypt', metavar="DECRYPT",
-                        action='store', type=str, default=None, help="File Address")
+    parser.add_argument('-l', '--login', metavar="ACCOUNT", action='store',
+                        choices=["sign in", "sign up"], required=True, help="Login Type")
     args = parser.parse_args()
+
+    user_pass = {}
+    try:
+        with open(".\\cryptographer\\users.pass", 'rb') as fl:
+            user_pass.update(pickle.load(fl))
+    except: pass
+
+    username = input("Username: ")
+    password = sha256(getpass("Password: ").encode()).hexdigest()
+    if args.username == "sign up":
+        re_password = sha256(getpass("Repeat Password: ").encode()).hexdigest()
+        if re_password != password:
+            raise exceptions.PasswordMatchingError("Password Not Match.")
+        user_pass[username] = password
+        with open(".\\cryptographer\\users.pass", 'wb') as fl:
+            pickle.dump(user_pass, fl)
+    else:
+        if user_pass[username] != password:
+            raise exceptions.WrongPasswordError("Wrong Password.")
 
     try:
         user = generator.KeyGenerator(args.username)
@@ -59,9 +77,3 @@ if __name__ == '__main__':
             return f"Hello {name}!"
 
         print('\n', say_hello(args.username).decode())
-        if args.encrypt:
-            enc = encoder.Encrypt(key)
-            enc(args.encrypt)
-        if args.decrypt:
-            dec = decoder.Decrypt(key)
-            dec(args.decrypt)
