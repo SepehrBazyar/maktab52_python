@@ -112,10 +112,11 @@ if __name__ == '__main__':
                         counter += 1
                     except KeyboardInterrupt:
                         break
-                with open(f"{lines[0][: 31][: -1]}.txt", 'w') as fl:
+                name = lines[0][: 31][: -1].replace(" ", "_")
+                with open(f"{name}.txt", 'w') as fl:
                     fl.writelines(lines)
-                enc(f"{lines[0][: 31][: -1]}.txt")
-                remove(f"{lines[0][: 31][: -1]}.txt")
+                enc(f"{name}.txt")
+                remove(f"{name}.txt")
 
         elif args.command == "decrypt":
             dec = decoder.Decrypt(key)
@@ -129,10 +130,11 @@ if __name__ == '__main__':
                         counter += 1
                     except KeyboardInterrupt:
                         break
-                with open(f"{lines[0][: 31][: -1].decode()}.txt", 'wb') as fl:
+                name = lines[0][: 31][: -1].replace(" ", "_").decode()
+                with open(f"{name}.txt", 'wb') as fl:
                     fl.writelines(lines)
-                dec(f"{lines[0][: 31][: -1].decode()}.txt")
-                remove(f"{lines[0][: 31][: -1].decode()}.txt")
+                dec(f"{name}.txt")
+                remove(f"{name}.txt")
 
         else:
             raise exceptions.InvalidInputError("Just Encrypt or Decrypt.")
