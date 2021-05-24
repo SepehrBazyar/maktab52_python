@@ -3,7 +3,7 @@ import re as regex
 
 
 def name_validation(name: str) -> bool:
-    pattern = "[A-Za-z\_]{5,14}"
+    pattern = "^[A-Za-z\_]{5,14}$"
     return bool(regex.search(pattern, name))
 
 
