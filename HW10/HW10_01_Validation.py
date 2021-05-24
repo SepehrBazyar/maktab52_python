@@ -9,7 +9,9 @@ def name_validation(name: str) -> bool:
 
 
 def email_validation(email: str) -> bool:
-    pass
+    "name@mail.com is a Validate Email because has a Username and a Domin Name."
+    pattern = r"^([\w\.\_\-]+)[@]([\w\.\_\-]*\w)[.]([A-Za-z]{2,3})$" # split by group items
+    return bool(regex.search(pattern, email))
 
 
 def phone_validation(phone: str) -> bool:
