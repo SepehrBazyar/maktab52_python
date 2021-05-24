@@ -3,7 +3,8 @@ import re as regex
 
 
 def name_validation(name: str) -> bool:
-    pass
+    pattern = "[A-Za-z\_]{5,14}"
+    return bool(regex.search(pattern, name))
 
 
 def email_validation(email: str) -> bool:
