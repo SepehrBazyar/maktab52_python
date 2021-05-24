@@ -14,9 +14,17 @@ class SignUp:
         self.USERS.append({'name': name, 'phone': phone, 'email': email})
 
     @classmethod
-    def save(cls):
-        with open("users.json", 'w') as fl:
-            json.dump(cls.USERS, fl)
+    def save(cls, path="users.json"):
+        with open(path, 'w') as fl:
+            json.dump(cls.USERS, fl, indent=4)
+
+    @classmethod
+    def load(cls, path="users.json"):
+        try:
+            with open(path, 'r') as fl:
+                cls.USERS = json.load(fl)
+        except:
+            pass
 
     def __repr__(self) -> str:
         return f"""
