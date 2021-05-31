@@ -2,6 +2,11 @@ body {
     background-color: #1B2631;
 }
 
+button {
+    border-radius: 10px;
+    float: right;
+}
+
 h1, h3, p {
     color: #F5F5F5;
 }
