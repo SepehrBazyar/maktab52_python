@@ -1,3 +1,15 @@
+body {
+    background-color: #1B2631;
+}
+
+h1, p {
+    color: #F5F5F5;
+}
+
+h2 {
+    color: #DC143C;
+}
+
 ul {
     list-style-type: none;
 }
