@@ -3,6 +3,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+div {
+    color: #F5F5F5;
+}
+
 .fixed_sidebar {
     height: 100%; /* Full-height */
     width: 250px; /* Set the width of the sidebar */
@@ -13,7 +17,16 @@ body {
     overflow: hidden;
     padding: 50px 50px 25px 50px;
     text-align: center;
-    color: white;
+}
+
+.main {
+    margin-left: 250px; /* Same as the width of the sidebar */
+    padding: 50px 100px 50px 200px;
+}
+
+h2 {
+    color: #DC143C;
+    margin-bottom: 25px;
 }
 
 ul {
