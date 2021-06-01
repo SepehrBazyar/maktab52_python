@@ -38,3 +38,14 @@ ul {
 li {
     margin: 20px 0 20px;
 }
+
+.icon {
+    float: left;
+    width: 10%;
+    height: 10%;
+    margin-right: 25px;
+}
+
+.academic {
+    margin-bottom: 150px;
+}
