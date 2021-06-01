@@ -58,3 +58,34 @@ span {
 a {
     text-decoration: none;
 }
+
+.skills {
+    width: 75%;
+    background-color: #B3B6B7;
+    border-radius: 15px;
+    margin: 25px;
+}
+  
+#python {
+    width: 90%;
+    height: 5px;
+    background-color: #6C3483;
+}
+
+#git {
+    width: 80%;
+    height: 5px;
+    background-color: #6C3483;
+}
+
+#sql {
+    width: 60%;
+    height: 5px;
+    background-color: #6C3483;
+}
+
+#front {
+    width: 45%;
+    height: 5px;
+    background-color: #6C3483;
+}
