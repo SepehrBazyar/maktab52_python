@@ -99,26 +99,29 @@ input {
     box-shadow: #000000 2px 2px 5px;
 }
 
+/* Tooltip container */
 .tooltip {
     position: relative;
-    border-bottom: 1px none #000000;
     float: right;
 }
 
+/* Tooltip text */
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
     background-color: #000000;
     color: #F5F5F5;
     text-align: center;
-    padding: 5px 0;
     border-radius: 6px;
-   
-    /* Position the tooltip text - see examples below! */
+    padding: 5px 0;
     position: absolute;
     z-index: 1;
+    top: 135%;
+    left: 50%;
+    margin-left: -60px;
 }
 
+/* Tooltip arrow */
 .tooltip .tooltiptext::after {
     content: " ";
     position: absolute;
@@ -130,6 +133,7 @@ input {
     border-color: transparent transparent #000000 transparent;
 }
 
+/* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
