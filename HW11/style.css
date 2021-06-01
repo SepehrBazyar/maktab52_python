@@ -60,10 +60,10 @@ a {
 }
 
 .skills {
-    width: 75%;
+    width: 90%;
     background-color: #B3B6B7;
     border-radius: 15px;
-    margin: 25px;
+    margin: 20px 0 50px 0;
 }
   
 #python {
