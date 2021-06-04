@@ -25,19 +25,25 @@ class BaseManager(ABC):
 
 
 class DatabaseManager(BaseManager):
-    TABLES = {}
-
     def __init__(self, database: str, user: str, password: str, host: str, port: str) -> None:
         try:
             self.conn: connection = connect(
                 database=database, user=user, password=password, host=host, port=port)
             self.cursor: cursor = self.conn.cursor
+            self.tables = {}
             logging.info(f"{__name__}: Connection Succeeded.")
         except:
             logging.error(f"{__name__}: Connection Failed.")
 
-    def __call__(self, *args, **kwds):
-        return super().__call__(*args, **kwds)
+    def __call__(self, table_name: str, **kwargs):
+        self.tables[table_name] = kwargs
+        SQL = f"""
+CREATE TABLE {table_name} (
+    {','.join([k + ' ' + v for k, v in kwargs])}
+);
+"""
+        self.cursor.execute(SQL)
+        logging.info(f"{__name__}: Create Table Succeeded.")
 
     def create(self):
         pass
