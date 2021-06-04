@@ -1,9 +1,9 @@
 # Written by: Sepehr Bazyar
-from typing import List
 from psycopg2 import connect
 from psycopg2._psycopg import connection, cursor
 
 from abc import ABC, abstractmethod
+from typing import Any, List
 
 import logging
 
@@ -62,8 +62,15 @@ FROM {table_name};
         logging.info(f"{__name__}: Read Table Succeeded.")
         return self.cursor.fetchall()
 
-    def update(self):
-        pass
+    def update(self, table_name: str, column: str, value: Any, **kwargs):
+        SQL = f"""
+UPDATE {table_name}
+SET {','.join([k + ' = ' + v for k, v in kwargs])}
+WHERE {column} = {value};
+"""
+        self.cursor.execute(SQL)
+        self.conn.commit()
+        logging.info(f"{__name__}: Update Row Succeeded.")
 
     def delete(self):
         pass
