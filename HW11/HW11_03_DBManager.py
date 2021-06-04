@@ -1,4 +1,5 @@
 # Written by: Sepehr Bazyar
+from typing import List
 from psycopg2 import connect
 from psycopg2._psycopg import connection, cursor
 
@@ -34,7 +35,7 @@ class DatabaseManager(BaseManager):
         except:
             logging.error(f"{__name__}: Connection Failed.")
 
-    def __call__(self, table_name: str, **kwargs):
+    def __call__(self, table_name: str, **kwargs) -> None:
         SQL = f"""
 CREATE TABLE {table_name} (
     {','.join([k + ' ' + v for k, v in kwargs])}
@@ -43,8 +44,13 @@ CREATE TABLE {table_name} (
         self.cursor.execute(SQL)
         logging.info(f"{__name__}: Create Table Succeeded.")
 
-    def create(self):
-        pass
+    def create(self, table_name: str, *args: List[str]):
+        SQL = f"""
+INSERT INTO {table_name}
+VALUES ({','.join(args)} );
+"""
+        self.cursor.execute(SQL)
+        logging.info(f"{__name__}: Create Table Succeeded.")
 
     def read(self):
         pass
