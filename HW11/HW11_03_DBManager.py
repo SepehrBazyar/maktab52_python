@@ -44,16 +44,23 @@ CREATE TABLE {table_name} (
         self.cursor.execute(SQL)
         logging.info(f"{__name__}: Create Table Succeeded.")
 
-    def create(self, table_name: str, *args: List[str]):
+    def create(self, table_name: str, *args: List[str]) -> None:
         SQL = f"""
 INSERT INTO {table_name}
 VALUES ({','.join(args)} );
 """
         self.cursor.execute(SQL)
-        logging.info(f"{__name__}: Create Table Succeeded.")
+        self.conn.commit()
+        logging.info(f"{__name__}: Create Row Succeeded.")
 
-    def read(self):
-        pass
+    def read(self, table_name: str, *args: List[str]) -> tuple:
+        SQL = f"""
+SELECT {','.join(args) or '*'}
+FROM {table_name};
+"""
+        self.cursor.execute(SQL)
+        logging.info(f"{__name__}: Read Table Succeeded.")
+        return self.cursor.fetchall()
 
     def update(self):
         pass
