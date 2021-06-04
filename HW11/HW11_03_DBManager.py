@@ -30,13 +30,11 @@ class DatabaseManager(BaseManager):
             self.conn: connection = connect(
                 database=database, user=user, password=password, host=host, port=port)
             self.cursor: cursor = self.conn.cursor
-            self.tables = {}
             logging.info(f"{__name__}: Connection Succeeded.")
         except:
             logging.error(f"{__name__}: Connection Failed.")
 
     def __call__(self, table_name: str, **kwargs):
-        self.tables[table_name] = kwargs
         SQL = f"""
 CREATE TABLE {table_name} (
     {','.join([k + ' ' + v for k, v in kwargs])}
