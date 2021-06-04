@@ -26,6 +26,9 @@ class BaseManager(ABC):
 
 
 class DatabaseManager(BaseManager):
+    """
+    PostgreSQL Data Base Manager with CRUD Operator.
+    """
     def __init__(self, database: str, user: str, password: str, host: str, port: str) -> None:
         try:
             self.conn: connection = connect(
@@ -72,8 +75,14 @@ WHERE {column} = {value};
         self.conn.commit()
         logging.info(f"{__name__}: Update Row Succeeded.")
 
-    def delete(self):
-        pass
+    def delete(self, table_name: str, column: str, value: Any):
+        SQL = f"""
+DELETE FROM {table_name}
+WHERE {column} = {value};
+"""
+        self.cursor.execute(SQL)
+        self.conn.commit()
+        logging.info(f"{__name__}: Delete Row Succeeded.")
 
     def __del__(self):
         self.conn.close()
