@@ -4,116 +4,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap.min.css" media="all">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css" media="all">
-	<link rel="stylesheet" href="assets/css/owl.theme.css" type="text/css" media="all">
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css" media="all">
-	<link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css" media="all">
-	<link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="http://gorbeh.ikacc.ir/gorbeh/css/gorbeh-icons.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
     <title>Sepehr Bazyar</title>
     <link rel="shortcut icon" href="S.png">
     <style>
-        body {
-            background-color: #424949;
-            color: #F5F5F5;
-        }
-
         img {
-            width: 60%;
-            height: 30%;
+            border: 5px solid white;
             border-radius: 50%;
-            border: 5px solid;
-            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.99);
+            width: 75%;
+            height: 75%;
         }
-
-        span {
-            color: #B3B6B7;
+        a , a:hover {
+            color: white;
+            text-decoration: none;
         }
-
         ul {
             list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
         }
-
-        a:hover{
-            color: #F5F5F5;
-            text-decoration: none;
-        }
-
-        .social-media > li {
-            float: left;
-        }
-
-        li a {
-            display: block;
+        h1 {
             color: white;
-            padding: 16px;
-            text-decoration: none;
         }
-
-        .fix {
-            height: 100%;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #2E8B57;
-            overflow: hidden;
+        h2 {
+            color: darkred;
         }
-
-        footer {
-            position: fixed;
-            left: 1.5rem;
-            right: 80vw;
-            bottom: 1rem;
+        span {
+            color: dimgray;
         }
     </style>
 </head>
 
-<body class="bg-dark">
-    <div class="container-fluid">
+<body>
+    <div class="container-fluid bg-dark">
         <div class="row">
-            <div class="col-3 bg-success fix" style="padding: 1rem 1rem 1rem 1rem;">
-                <center>
-                    <img src="Me.jpg">
-                    <div>
-                        <h1>Sepehr Bazyar</h1>
-                        <span><strong>Python Back-End Developer</strong></span>
+            <div class="col-3 bg-success h-100 p-4">
+                <div class="container">
+                    <div class="intro text-center">
+                        <img src="Me.jpg">
+                        <div class="info m-3">
+                            <h1>Sepehr Bazyar</h1>
+                            <span><strong>Python Back-End Developer</strong></span>
+                        </div>
+                        <center>
+                            <ul style="font-size: x-large;">
+                                <li class="mx-4" style="display: inline-block"><a href="#"><i class="gb gb_github"></i></a></li>
+                                <li class="mx-4" style="display: inline-block"><a href="#"><i class="gb gb_instagram"></i></a></li>
+                                <li class="mx-4" style="display: inline-block"><a href="#"><i class="gb gb_telegram"></i></a></li>
+                            </ul>
+                        </center>
                     </div>
-                    </center>
-                    <ul class="social-media" style="margin: 0 6rem;">
-                        <li><a href="#"><i class="gb gb_github" style="font-size: 1.5rem;"></i></a></li>
-                        <li><a href="#"><i class="gb gb_instagram" style="font-size: 1.5rem;"></i></a></li>
-                        <li><a href="#"><i class="gb gb_telegram" style="font-size: 1.5rem;"></i></a></li>
-                    </ul>
-                <ul style="margin-top: 3rem; font-size: 1.5rem;"><b>
-                    <li style="padding-bottom: 1rem;"><a href="#about">ABOUT ME</a></li>
-                    <li style="padding-bottom: 1rem;"><a href="#educate">EDUCATION</a></li>
-                    <li style="padding-bottom: 1rem;"><a href="#contact">CONTACTS</a></li>
-                </b></ul>
-                <footer>
+                    <ul class="my-5" style="font-size: large"><b>
+                        <li class="my-4"><a href="#about">ABOUT ME</a></li>
+                        <li class="my-4"><a href="#educate">EDUCATION</a></li>
+                        <li class="my-4"><a href="#contact">CONTACT</a></li>
+                    </b></ul>
                     <span>Last Updated: 2021 June</span>
-                </footer>
+                </div>
             </div>
-            <div class="col-9">
-                <section id="about">
-
-                </section>
-                <section id="educate">
-                    <article>
-
-                    </article>
-                    <article>
-
-                    </article>
-                </section>
-                <section id="contact">
-
-                </section>
+            <div class="col-9" style="color: white">
+                <div class="container p-5">
+                    <div class="row mb-2"><h2><b>ABOUT ME</b></h2></div>
+                    <div class="row">
+                        <p style="font-size: large">
+                        Hello, My Name is Sepehr Bazyar.
+                        I am a Junior Python Programmer & Web Developer
+                        Whose Works are Mostly What You Want.
+                        I am Also Interested in Working in the Field of
+                        Data Science and Machine Learning.</p>
+                    </div>
+                    <div class="row">
+                        <ul class="my-4">
+                            <li><b>Birthday: </b> November 25, 2000</li>
+                            <li><b>Location: </b> Tehran, Iran</li>
+                            <li><b>Email: </b> bazyar.sepehr@gmail.com</li>
+                            <li><b>Phone: </b> +989377664534</li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Python<span style="float: right; text-align: right"><b>90%</b></span></h5>
+                                </div>
+                                <div class="row">
+                                    <div class="progress" style="width: 100%">
+                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Git</h5>
+                                    <span><b>80%</b></span>
+                                </div>
+                                <div class="row">
+                                    <div class="progress" style="width: 100%">
+                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="container">
+                                <div class="row">
+                                    <h5>SQL</h5>
+                                    <span><b>60%</b></span>
+                                </div>
+                                <div class="row">
+                                    <div class="progress" style="width: 100%">
+                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Front</h5>
+                                    <span><b>40%</b></span>
+                                </div>
+                                <div class="row">
+                                    <div class="progress" style="width: 100%">
+                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
