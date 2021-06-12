@@ -4,13 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css" media="all">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css" media="all">
+	<link rel="stylesheet" href="assets/css/owl.theme.css" type="text/css" media="all">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css" media="all">
+	<link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css" media="all">
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="http://gorbeh.ikacc.ir/gorbeh/css/gorbeh-icons.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
     <title>Sepehr Bazyar</title>
     <link rel="shortcut icon" href="S.png">
     <style>
         body {
             background-color: #424949;
+            color: #F5F5F5;
         }
+
+        img {
+            width: 60%;
+            height: 30%;
+            border-radius: 50%;
+            border: 5px solid;
+            margin-bottom: 2rem;
+        }
+
+        span {
+            color: #B3B6B7;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        a:hover{
+            color: #F5F5F5;
+            text-decoration: none;
+        }
+
+        .social-media > li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            padding: 16px;
+            text-decoration: none;
+        }
+
         .fix {
             height: 100%;
             position: fixed;
@@ -20,59 +64,46 @@
             background-color: #2E8B57;
             overflow: hidden;
         }
+
+        footer {
+            position: fixed;
+            left: 1.5rem;
+            right: 80vw;
+            bottom: 1rem;
+        }
     </style>
 </head>
 
-<body>
+<body class="bg-dark">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
-                <img>
-                <div>
-                    <h1></h1>
-                    <span></span>
-                </div>
-                <ul>
-                    <li>
-                        <a>
-                            <i></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <i></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <i></i>
-                        </a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a>
-                            <i></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <i></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <i></i>
-                        </a>
-                    </li>
-                </ul>
-                <span></span>
+            <div class="col-3 bg-success fix" style="padding: 1rem 1rem 1rem 1rem;">
+                <center>
+                    <img src="Me.jpg">
+                    <div>
+                        <h1>Sepehr Bazyar</h1>
+                        <span><strong>Python Back-End Developer</strong></span>
+                    </div>
+                    </center>
+                    <ul class="social-media" style="margin: 0 6rem;">
+                        <li><a href="#"><i class="gb gb_github" style="font-size: 1.5rem;"></i></a></li>
+                        <li><a href="#"><i class="gb gb_instagram" style="font-size: 1.5rem;"></i></a></li>
+                        <li><a href="#"><i class="gb gb_telegram" style="font-size: 1.5rem;"></i></a></li>
+                    </ul>
+                <ul style="margin-top: 3rem; font-size: 1.5rem;"><b>
+                    <li style="padding-bottom: 1rem;"><a href="#about">ABOUT ME</a></li>
+                    <li style="padding-bottom: 1rem;"><a href="#educate">EDUCATION</a></li>
+                    <li style="padding-bottom: 1rem;"><a href="#contact">CONTACTS</a></li>
+                </b></ul>
+                <footer>
+                    <span>Last Updated: 2021 June</span>
+                </footer>
             </div>
             <div class="col-9">
-                <section>
+                <section id="about">
 
                 </section>
-                <section>
+                <section id="educate">
                     <article>
 
                     </article>
@@ -80,7 +111,7 @@
 
                     </article>
                 </section>
-                <section>
+                <section id="contact">
 
                 </section>
             </div>
