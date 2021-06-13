@@ -10,7 +10,7 @@
     <title>Sepehr Bazyar</title>
     <link rel="shortcut icon" href="S.png">
     <style>
-        img {
+        .avatar {
             border: 5px solid white;
             border-radius: 50%;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.99);
@@ -33,6 +33,13 @@
         span {
             color: dimgray;
         }
+        hr {
+            height:2px;
+            border-width:0;
+            color:white;
+            background-color:white;
+            margin: 2rem 0 2rem;
+        }
     </style>
 </head>
 
@@ -42,7 +49,7 @@
             <div class="col-3 bg-success h-100 p-4">
                 <div class="container">
                     <div class="intro text-center">
-                        <img src="Me.jpg">
+                        <img class="avatar" src="Me.jpg">
                         <div class="info m-3">
                             <h1>Sepehr Bazyar</h1>
                             <span><strong>Python Back-End Developer</strong></span>
@@ -65,76 +72,108 @@
             </div>
             <div class="col-9" style="color: white">
                 <div class="container p-5">
-                    <div class="row mb-2"><h2><b>ABOUT ME</b></h2></div>
-                    <div class="row">
-                        <p style="font-size: large">
-                        Hello, My Name is Sepehr Bazyar.
-                        I am a Junior Python Programmer & Web Developer
-                        Whose Works are Mostly What You Want.
-                        I am Also Interested in Working in the Field of
-                        Data Science and Machine Learning.</p>
-                    </div>
-                    <div class="row">
-                        <ul class="my-4">
-                            <li><b>Birthday: </b> November 25, 2000</li>
-                            <li><b>Location: </b> Tehran, Iran</li>
-                            <li><b>Email: </b> bazyar.sepehr@gmail.com</li>
-                            <li><b>Phone: </b> +989377664534</li>
-                        </ul>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <div class="container">
-                                <div class="row">
-                                    <h5>Python<span style="float: right; text-align: right"><b>90%</b></span></h5>
+                    <section id="about">
+                        <div class="row mb-2"><h2><b>ABOUT ME</b></h2></div>
+                        <div class="row">
+                            <p style="font-size: large">
+                            Hello, My Name is Sepehr Bazyar.
+                            I am a Junior Python Programmer & Web Developer
+                            Whose Works are Mostly What You Want.
+                            I am Also Interested in Working in the Field of
+                            Data Science and Machine Learning.</p>
+                        </div>
+                        <div class="row">
+                            <ul class="my-4">
+                                <li><b>Birthday: </b> November 25, 2000</li>
+                                <li><b>Location: </b> Tehran, Iran</li>
+                                <li><b>Email: </b> bazyar.sepehr@gmail.com</li>
+                                <li><b>Phone: </b> +989377664534</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 mb-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <h5>Python<span><b>90%</b></span></h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="progress" style="width: 100%;">
+                                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 90%"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="progress" style="width: 100%">
-                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 90%"></div>
+                            </div>
+                            <div class="col-12 col-sm-6 mb-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <h5>Git</h5>
+                                        <span><b>80%</b></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="progress" style="width: 100%">
+                                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 mb-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <h5>SQL</h5>
+                                        <span><b>60%</b></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="progress" style="width: 100%">
+                                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 mb-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <h5>Front</h5>
+                                        <span><b>40%</b></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="progress" style="width: 100%">
+                                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 40%"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="container">
-                                <div class="row">
-                                    <h5>Git</h5>
-                                    <span><b>80%</b></span>
-                                </div>
-                                <div class="row">
-                                    <div class="progress" style="width: 100%">
-                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 80%"></div>
-                                    </div>
-                                </div>
+                    </section><hr>
+                    <section id="educate">
+                        <div class="row mb-2"><h2><b>EDUCATION</b></h2></div>
+                        <div class="row">
+                            <div class="container-fluid">
+                                <ul>
+                                    <li>
+                                        <div class="col-2">
+                                            <a href="https://khu.ac.ir/" target="_blank">
+                                                <img src="Kharazmi.png" alt="Kharazmi" style="width: 50%; height: 50%;">
+                                            </a>
+                                        </div>
+                                        <div class="col-10">
+                                            <h3>Kharazmi University</h3>
+                                            <span>Industrial Engineers</span>
+                                            <p>Enrolled Since 2019 to Present<br>Average: 17.36</p>
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="container">
-                                <div class="row">
-                                    <h5>SQL</h5>
-                                    <span><b>60%</b></span>
-                                </div>
-                                <div class="row">
-                                    <div class="progress" style="width: 100%">
-                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 60%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="container">
-                                <div class="row">
-                                    <h5>Front</h5>
-                                    <span><b>40%</b></span>
-                                </div>
-                                <div class="row">
-                                    <div class="progress" style="width: 100%">
-                                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width: 40%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </section><hr>
+                    <section id="contact">
+
+                    </section>
                 </div>
             </div>
         </div>
