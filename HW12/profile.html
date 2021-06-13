@@ -41,13 +41,19 @@
             background-color:white;
             margin: 2rem 0 2rem;
         }
+        .fixed {
+            height: 100%;
+            position: fixed;
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
     <div class="container-fluid bg-dark">
         <div class="row">
-            <div class="d-none d-lg-flex col-3 bg-success p-4">
+            <div class="d-none d-lg-flex col-3"></div>
+            <div class="d-none d-lg-flex col-3 bg-success p-4 fixed">
                 <div class="container">
                     <div class="intro text-center">
                         <img class="avatar" src="Me.jpg">
@@ -68,7 +74,7 @@
                         <li class="my-4"><a href="#educate">EDUCATION</a></li>
                         <li class="my-4"><a href="#contact">CONTACT</a></li>
                     </b></ul>
-                    <span>Last Updated: 2021 June</span>
+                    <span class="mb-1">Last Updated: 2021 June</span>
                 </div>
             </div>
             <div class="col-9" style="color: white">
