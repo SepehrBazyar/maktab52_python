@@ -28,6 +28,16 @@ def calculate_product_price(product_type: str, count: int, userid: int = None) -
     query = {"type": product_type}
     prod = products.find_one(query, {"_id": 0, "price": 1, "commission_groups": 1})
     ans = prod["price"] * (1 - calculate_markup_percent(product_type, count) / 100)
+
+    if userid:
+        for commission in prod["commission_groups"]:
+            query = {"group_name": commission}
+            res = commissions.find_one(query)
+            if userid in res["users"]:
+                if res["unit"] == "percent":
+                    ans *= (1 - res["cost"] / 100)
+                else:
+                    ans -= res["cost"]
     return ans
 
 client = MongoClient('mongodb://localhost:27017/')
@@ -46,6 +56,6 @@ markups = db.markups
 commissions = db.commissions
 users = db.users
 
-name  = input("Please Enter Your Name: ").split()
-query = {"first_name": name[0], "last_name": name[1]}
+name   = input("Please Enter Your Name: ").split()
+query  = {"first_name": name[0], "last_name": name[1]}
 userid = users.find_one(query, {"userid": 1, "_id": 0})
