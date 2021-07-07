@@ -12,18 +12,10 @@ db = client.company
 logging.info("Connecting to Company DataBase...")
 
 if not db.list_collection_names():
-    for item in product_list:
-        db.products.insert_one(item)
-
-    for item in markup_list:
-        db.markups.insert_one(item)
-    
-    for item in commission_list:
-        db.commissions.insert_one(item)
-    
-    for item in user_list:
-        db.users.insert_one(item)
-
+    db.products.insert_many(product_list)
+    db.markups.insert_many(markup_list)
+    db.commissions.insert_many(commission_list)
+    db.users.insert_many(user_list)
     logging.info("Documents Writted into the Collections.")
 
 products = db.products
