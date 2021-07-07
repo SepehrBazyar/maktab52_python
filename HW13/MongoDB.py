@@ -59,3 +59,20 @@ users = db.users
 name   = input("Please Enter Your Name: ").split()
 query  = {"first_name": name[0], "last_name": name[1]}
 userid = users.find_one(query, {"userid": 1, "_id": 0})
+
+orders = input("""Please Enter Your Orders:
+(For Example -> ProductName1 Count1 ProductName2 Count2 ...)
+>>> """).split()
+
+price = 0
+for counter in range(0, len(orders), 2):
+    query = {"name": orders[counter]}
+    res = products.find_one(query, {"_id": 0, "type": 1})
+    if res:
+        if userid:
+            price += calculate_product_price(res["type"], int(orders[counter + 1]), userid)
+        else:
+            price += calculate_product_price(res["type"], int(orders[counter + 1]))
+    else:
+        logging.error(f"{orders[counter]} is not in the Product List.")
+print(f"\nTotal Price of Your Recepites is Equal {price:.2f}$.")
