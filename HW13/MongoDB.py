@@ -61,8 +61,8 @@ with MongoClient('mongodb://localhost:27017/') as client:
     userid = users.find_one(query, {"userid": 1, "_id": 0})
 
     orders = input("""Please Enter Your Orders:
-    (For Example -> ProductName1 Count1 ProductName2 Count2 ...)
-    >>> """).split()
+(For Example -> ProductName1 Count1 ProductName2 Count2 ...)
+>>> """).split()
 
     price = 0
     for counter in range(0, len(orders), 2):
