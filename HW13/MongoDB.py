@@ -15,9 +15,9 @@ def calculate_markup_percent(product_type: str, count: int) -> float:
 
     query = {"product_type": product_type}
     res = markups.find_one(query, {"_id": 0, "lower_cost": 1, "upper_cost": 1, "lower_count": 1})
-    m = (res["upper_cost"] - res["lower_cost"]) / (res["lower_count"] - 1)
-    h = res["upper_cost"] - (m * res["lower_count"])
-    return float(round(m * count + h, 2)) if count < res["lower_count"] else float(res["upper_cost"])
+    m = (res["lower_cost"] - res["upper_cost"]) / (res["lower_count"] - 1)
+    h = res["upper_cost"] - m
+    return float(round(m * count + h, 2) if count < res["lower_count"] else res["lower_cost"])
 
 def calculate_product_price(product_type: str, count: int, userid: int = None) -> float:
     """
@@ -27,7 +27,7 @@ def calculate_product_price(product_type: str, count: int, userid: int = None) -
 
     query = {"type": product_type}
     prod = products.find_one(query, {"_id": 0, "price": 1, "commission_groups": 1})
-    ans = prod["price"] * (1 - calculate_markup_percent(product_type, count) / 100)
+    ans = prod["price"] * (1 + calculate_markup_percent(product_type, count) / 100)
 
     if userid:
         for commission in prod["commission_groups"]:
