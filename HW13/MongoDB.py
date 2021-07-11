@@ -40,39 +40,39 @@ def calculate_product_price(product_type: str, count: int, userid: int = None) -
                     ans -= res["cost"]
     return ans * count
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client.company
-logging.info("Connecting to Company DataBase...")
+with MongoClient('mongodb://localhost:27017/') as client:
+    db = client.company
+    logging.info("Connecting to Company DataBase...")
 
-if not db.list_collection_names(): #create collections in database
-    db.products.insert_many(product_list)
-    db.markups.insert_many(markup_list)
-    db.commissions.insert_many(commission_list)
-    db.users.insert_many(user_list)
-    logging.info("Documents Writted into the Collections.")
+    if not db.list_collection_names(): #create collections in database
+        db.products.insert_many(product_list)
+        db.markups.insert_many(markup_list)
+        db.commissions.insert_many(commission_list)
+        db.users.insert_many(user_list)
+        logging.info("Documents Writted into the Collections.")
 
-products = db.products
-markups = db.markups
-commissions = db.commissions
-users = db.users
+    products = db.products
+    markups = db.markups
+    commissions = db.commissions
+    users = db.users
 
-name   = input("Please Enter Your Name: ").split()
-query  = {"first_name": name[0], "last_name": name[1]}
-userid = users.find_one(query, {"userid": 1, "_id": 0})
+    name   = input("Please Enter Your Name: ").split()
+    query  = {"first_name": name[0], "last_name": name[1]}
+    userid = users.find_one(query, {"userid": 1, "_id": 0})
 
-orders = input("""Please Enter Your Orders:
-(For Example -> ProductName1 Count1 ProductName2 Count2 ...)
->>> """).split()
+    orders = input("""Please Enter Your Orders:
+    (For Example -> ProductName1 Count1 ProductName2 Count2 ...)
+    >>> """).split()
 
-price = 0
-for counter in range(0, len(orders), 2):
-    query = {"name": orders[counter]}
-    res = products.find_one(query, {"_id": 0, "type": 1})
-    if res:
-        if userid:
-            price += calculate_product_price(res["type"], int(orders[counter + 1]), userid)
+    price = 0
+    for counter in range(0, len(orders), 2):
+        query = {"name": orders[counter]}
+        res = products.find_one(query, {"_id": 0, "type": 1})
+        if res:
+            if userid:
+                price += calculate_product_price(res["type"], int(orders[counter + 1]), userid)
+            else:
+                price += calculate_product_price(res["type"], int(orders[counter + 1]))
         else:
-            price += calculate_product_price(res["type"], int(orders[counter + 1]))
-    else:
-        logging.error(f"{orders[counter]} is not in the Product List.")
-print(f"\nTotal Price of Your Recepites is Equal {price:.2f}$.")
+            logging.error(f"{orders[counter]} is not in the Product List.")
+    print(f"\nTotal Price of Your Recepites is Equal {price:.2f}$.")
