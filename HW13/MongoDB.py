@@ -10,7 +10,7 @@ def calculate_markup_percent(product_type: str, count: int) -> float:
     """
     Query to Calculate Markup of Product by Percent Unit.\n
     Markup for 1 Count Lower Cost and Greater than Lower Count is Equal Upper Cost.\n
-    Other Count Calculate Liner. For Example: calculate_markup_percent("1", 5) = 14.44
+    Other Count Calculate Liner. For Example: calculate_markup_percent("1", 5) = 15.55
     """
 
     query = {"product_type": product_type}
@@ -38,7 +38,7 @@ def calculate_product_price(product_type: str, count: int, userid: int = None) -
                     ans *= (1 - res["cost"] / 100)
                 else:
                     ans -= res["cost"]
-    return ans
+    return ans * count
 
 client = MongoClient('mongodb://localhost:27017/')
 db = client.company
